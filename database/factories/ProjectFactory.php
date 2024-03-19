@@ -22,7 +22,7 @@ class ProjectFactory extends Factory
             'title' => $title,
             'slug' => Str::slug($title),
             'description' => fake()->paragraphs(8, true),
-            'image' => fake()->imageUrl(200,200, 'project',true),
+            'image' => fake()->imageUrl(200,200,true),
         ];
     }
 }
