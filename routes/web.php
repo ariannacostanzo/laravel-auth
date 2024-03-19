@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', GuestHomeController::class)->name('guest.home');
 
 Route::get('/admin', AdminHomeController::class)->middleware(['auth', 'verified'])->name('admin.home');
+
+Route::get('/admin/projects', [ProjectController::class, 'index'])->name('admin.projects.index');
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
