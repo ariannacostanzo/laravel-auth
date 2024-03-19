@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'arianna@test.it',
             // 'password' => 'arianna3'
         ]);
-        
-        \App\Models\Project::factory(15)->create();
+
+        \App\Models\Project::factory(30)->create();
     }
 }

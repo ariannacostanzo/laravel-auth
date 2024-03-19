@@ -39,8 +39,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //todo project
-        return view('admin.projects.show');
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -48,7 +47,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -64,6 +63,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        //todo il tipo dell'alert dinamico
+        return to_route('admin.projects.index')->with('message', "Progetto #$project->id eliminato con successo");
     }
 }
