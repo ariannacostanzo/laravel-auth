@@ -3,7 +3,7 @@
 @section('title', 'Home')
 @section('content')
 
-<h1>I miei progetti</h1>
+<h1>I nostri progetti</h1>
 <hr>
 <div class="row">
         @forelse ($projects as $project)
@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$project->title}}</h5>
                     <p class="card-text">{{$project->getAbstract()}}</p>
-                    <a href="#" class="btn btn-primary">See details</a>
+                    <a href="#" class="btn btn-primary">Vedi dettagli</a>
                 </div>
             </div>
         </div>

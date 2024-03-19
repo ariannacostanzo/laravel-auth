@@ -4,7 +4,7 @@
 
 @section('title', 'Projects')
 
-<h1>Projects</h1>
+<h1>Progetti</h1>
 <hr>
 <table class="table table-hover table-striped">
   <thead>
