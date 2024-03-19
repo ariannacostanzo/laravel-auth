@@ -19,18 +19,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', GuestHomeController::class)->name('guest.home');
 
-Route::get('/admin', AdminHomeController::class)->middleware(['auth', 'verified'])->name('admin.home');
 
-//rotte per projects
-Route::get('/admin/projects', [ProjectController::class, 'index'])->name('admin.projects.index');
-Route::get('/admin/projects/create', [ProjectController::class, 'create'])->name('admin.projects.create');
-Route::get('/admin/projects/{project}', [ProjectController::class, 'show'])->name('admin.projects.show');
-Route::post('/admin/projects', [ProjectController::class, 'store'])->name('admin.projects.store');
-Route::get('/admin/projects/{project}/edit', [ProjectController::class, 'edit'])->name('admin.projects.edit');
-Route::put('/admin/projects/{project}', [ProjectController::class, 'update'])->name('admin.projects.update');
-Route::delete('/admin/projects/{project}', [ProjectController::class, 'destroy'])->name('admin.projects.destroy');
+Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('', AdminHomeController::class)->name('admin.home');
 
-
+    //rotte per projects
+    Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
+    Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
+    Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+    Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
+    Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+});
 
 //rotte auth
 
