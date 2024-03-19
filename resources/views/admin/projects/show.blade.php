@@ -9,7 +9,8 @@
 <hr>
 <div class="row">
     <div class="{{ $project->image ? 'col-2' : '' }}">
-        <img src="{{ $project->image }}" alt="{{$project->title}}"></div>
+        <img src="{{ $project->image }}" alt="{{$project->title}}">
+    </div>
     <div class="col">{{$project->description}}</div>
 </div>
 <div class="row my-5">
