@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,12 @@ class ProjectFactory extends Factory
      */
     public function definition(): array
     {
+        $title = fake()->text(30);
         return [
-            //
+            'title' => $title,
+            'slug' => Str::slug($title),
+            'description' => fake()->paragraphs(8, true),
+            'image' => fake()->imageUrl(200,200, 'project',true),
         ];
     }
 }
