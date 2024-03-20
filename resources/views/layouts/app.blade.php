@@ -32,8 +32,9 @@
         <main class="container my-5">
 
             @session('message')
-            <div class="alert alert-{{session('type')}}" role="alert">
+            <div class="alert alert-{{session('type')}} alert-dismissible fade show" role="alert">
                 {{$value}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endsession
 

@@ -27,7 +27,7 @@
         <div class="col-6">
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control @error('description') is-invalid @elseif(old('description', '')) is-valid @enderror" id="description" name="description" rows="6">{{old('description', $project->description)}}</textarea>
+                <textarea class="form-control @error('description') is-invalid @elseif(old('description', '')) is-valid @enderror" id="description" name="description" rows="10">{{old('description', $project->description)}}</textarea>
                 @error('description')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -48,7 +48,7 @@
         </div>
         <div class="col-1">
             <div class="mb-3">
-                <img src="https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg" id="preview" class="img-fluid">
+                <img src="{{old('image', 'https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg')}}" id="preview" class="img-fluid">
             </div>
         </div>
         <div class="col-6"></div>

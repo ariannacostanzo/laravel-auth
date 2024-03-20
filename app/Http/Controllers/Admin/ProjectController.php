@@ -105,7 +105,7 @@ class ProjectController extends Controller
         ]);
 
         $data = $request->all();
-        
+
         $project->update($data);
 
         return to_route('admin.projects.show', $project->id);
@@ -119,7 +119,7 @@ class ProjectController extends Controller
         $project->delete();
         //todo il tipo dell'alert dinamico
         return to_route('admin.projects.index')
-            ->with('message', "Progetto #$project->id eliminato con successo")
+            ->with('message', "Progetto '$project->title' eliminato con successo!")
             ->with('type', "danger");
     }
 }
