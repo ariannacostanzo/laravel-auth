@@ -55,7 +55,8 @@
         <div class="col-6 d-flex justify-content-end">
             <div class="mt-3 d-flex gap-3">
                 @if($project->exists)
-                    <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-primary"><i class="fa-solid fa-arrow-left me-2"></i>Torna al progetto</a>
+                <a href="{{route('admin.projects.index')}}" class="btn btn-primary"><i class="fa-solid fa-arrow-left me-2"></i>Torna alla lista</a>
+                    <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-secondary"><i class="fa-solid fa-arrow-right me-2"></i>Torna al progetto</a>
                     <button class="btn btn-success"><i class="fa-solid fa-floppy-disc me-2"></i>Salva modifiche</button>
                 @else 
                     <a href="{{route('admin.projects.index')}}" class="btn btn-primary"><i class="fa-solid fa-arrow-left me-2"></i>Torna alla lista</a>

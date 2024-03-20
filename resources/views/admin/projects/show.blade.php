@@ -3,7 +3,8 @@
 @section('content')
 
 @section('title', "Project $project->id")
-    
+
+@include('includes.projects.modal')
 
 <h1>{{$project->title}}</h1>
 <hr>
@@ -20,11 +21,13 @@
         <div class="d-flex justify-content-end gap-3">
             <a href="{{route('admin.projects.index')}}" class="btn btn-primary"><i class="fa-solid fa-arrow-left me-2"></i>Torna alla lista</a>
           <a href="{{route('admin.projects.edit', $project->id)}}" class="btn btn-warning"><i class="fa-solid fa-pen me-2"></i>Modifica</a>
-          <form action="{{route('admin.projects.destroy', $project->id)}}", method="POST">
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-danger"><i class="fa-regular fa-trash-can me-2"></i>Cancella</button>
-          </form>
+          
+          {{-- modal button  --}}
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                data-bs-target="#modal{{ $project->id }}">
+                <i class="fa-regular fa-trash-can  me-2"></i>Elimina</button>
+            </button>
+
         </div>
     </div>
 </div>
