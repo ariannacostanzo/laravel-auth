@@ -14,8 +14,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="icon" href="https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/681/original/Pittogramma-RGB-1080-BLUE-circle.png" type="icon">
     {{-- font awesome --}}
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css' integrity='sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==' crossorigin='anonymous'/>
+    <style>body {visibility: hidden}
+        </style>
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
@@ -29,7 +32,6 @@
         <main class="container my-5">
 
             @session('message')
-            {{-- todo il tipo dinamico --}}
             <div class="alert alert-{{session('type')}}" role="alert">
                 {{$value}}
             </div>

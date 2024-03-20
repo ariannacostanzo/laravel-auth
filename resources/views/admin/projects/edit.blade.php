@@ -9,4 +9,8 @@
 
 @include('includes.projects.form')
 
+@section('scripts')
+@vite('resources/js/image_preview.js')
+@endsection
+
 @endsection
