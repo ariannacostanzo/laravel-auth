@@ -94,7 +94,21 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        dd('Ha funzionato');
+        $request->validate([
+            'title' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
+            'description' => 'required|string',
+            'image' => 'nullable|url',
+        ], [
+            'title.required' => 'Inserisci il titolo del progetto',
+            'description.required' => 'Inserisci la descrizione del progetto',
+            'image.url' => 'L\'url dell\'immagine non è corretto',
+        ]);
+
+        $data = $request->all();
+        
+        $project->update($data);
+
+        return to_route('admin.projects.show', $project->id);
     }
 
     /**

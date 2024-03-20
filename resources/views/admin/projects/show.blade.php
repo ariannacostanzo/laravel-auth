@@ -9,11 +9,7 @@
 <hr>
 <div class="row">
     <div class="col-3">
-        @if(!$project->image)
-        <img src="https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg" alt="{{$project->title}}" class="img-fluid">
-        @else
-        <img src="{{ $project->image }}" alt="{{$project->title}}" class="img-fluid">
-        @endif
+        <img src="{{ $project->image ? $project->image : 'https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg' }}" class="card-img-top" alt="{{$project->title}}" class="img-fluid">
     </div>
     <div class="col">{{$project->description}}</div>
 </div>

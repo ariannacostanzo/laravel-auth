@@ -10,7 +10,7 @@
         <div class="col-3 my-3">
 
             <div class="card">
-                <img src="{{ $project->image }}" class="card-img-top" alt="{{$project->title}}">
+                <img src="{{ $project->image ? $project->image : 'https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg' }}" class="card-img-top" alt="{{$project->title}}" class="img-fluid">
                 <div class="card-body">
                     <h5 class="card-title">{{$project->title}}</h5>
                     <p class="card-text">{{$project->getAbstract()}}</p>
