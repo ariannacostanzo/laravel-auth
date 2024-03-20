@@ -111,4 +111,18 @@ class ProjectController extends Controller
             ->with('message', "Progetto '$project->title' eliminato con successo!")
             ->with('type', "danger");
     }
+
+    public function trash()
+    {
+        $projects = Project::onlyTrashed()->get();
+        return view('admin.projects.trash', compact('projects'));
+    }
+
+    public function restore(Project $project)
+    {
+        $project->restore();
+        return to_route('admin.projects.index')
+            ->with('message', "Progetto '$project->title' ripristinato con successo!")
+            ->with('type', "success");
+    }
 }

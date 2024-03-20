@@ -22,11 +22,17 @@ Route::get('/', GuestHomeController::class)->name('guest.home');
 
 Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     //rotta admin home
-    Route::get('', AdminHomeController::class)->name('admin.home');
+    Route::get('', AdminHomeController::class)->name('home');
+    //rotte cestino
+    Route::get('/projects/trash', [ProjectController::class, 'trash'])->name('projects.trash');
+    Route::patch('/projects/{project}/restore', [ProjectController::class, 'restore'])->name('projects.restore')->withTrashed();
+
+
     //rotte resource project
     Route::resource('/projects', ProjectController::class);
-
 });
+
+
 
 
 //rotte auth

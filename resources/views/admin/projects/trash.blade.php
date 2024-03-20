@@ -5,10 +5,9 @@
 @section('title', 'Projects')
 
 {{-- modal  --}}
-@include('includes.projects.modal')
 
 
-<h1>Progetti</h1>
+<h1>Progetti eliminati</h1>
 <hr>
 <table class="table table-hover table-striped">
     <thead>
@@ -19,14 +18,10 @@
             <th scope="col">Modificato</th>
             <th>
                 <div class="d-flex justify-content-end gap-3">
-                    <a href="{{route('admin.projects.trash')}}" class="btn btn-secondary">
-                        <i class="fa-solid fa-trash-can me-2"></i>
+                    <a href="{{route('admin.projects.index')}}" class="btn btn-primary">
+                        <i class="fa-solid fa-arrow-left me-2"></i>
                         {{-- todo rotta cestino --}}
-                        Vedi Cestino
-                    </a>
-                    <a href="{{ route('admin.projects.create') }}" class="btn btn-success">
-                        <i class="fa-solid fa-plus me-2"></i>
-                        Crea nuovo
+                        Torna a tutti i Progetti
                     </a>
                 </div>
             </th>
@@ -46,6 +41,11 @@
                                 class="fa-regular fa-eye"></i></a>
                         <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning"><i
                                 class="fa-solid fa-pen"></i></a>
+                        <form action="{{ route('admin.projects.restore', $project->id) }}" method="POST" >
+                            @csrf
+                            @method('PATCH')
+                            <button class="btn btn-success"><i class="fa-solid fa-trash-arrow-up"></i></button>
+                        </form>
                         
                         <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="delete-form" data-bs-toggle="modal" data-bs-target="#delete-modal" data-project="{{$project->title}}">
                             @csrf
@@ -68,10 +68,3 @@
 
 
 @endsection
-
-@section('scripts')
-@vite('resources/js/modal.js')
-
-@endsection
-
-{{-- todo guest projects show, trash, inserire dati con seeder, nuova colonna is_completed e cambiare per questo tutto quello che serve --}}

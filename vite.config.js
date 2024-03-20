@@ -12,7 +12,6 @@ export default defineConfig({
                 'resources/scss/app.scss', 
                 'resources/js/app.js',
                 'resources/js/form/image_preview.js',
-                'resources/js/form/slug_field.js',
                 'resources/js/modal.js',
 
             ],
