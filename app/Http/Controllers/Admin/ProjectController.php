@@ -12,18 +12,6 @@ use Illuminate\Support\Str;
 class ProjectController extends Controller
 {
 
-    // protected $validation_parameters = [
-    //     'title' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
-    //     'description' => 'required|string',
-    //     'image' => 'nullable|url',
-    // ];
-
-    // protected $validation_messages = [
-    //     'title.required' => 'Inserisci il titolo del progetto',
-    //     'description.required' => 'Inserisci la descrizione del progetto',
-    //     'image.url' => 'L\'url dell\'immagine non è corretto',
-    // ];
-
 
     /**
      * Display a listing of the resource.
@@ -117,7 +105,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        //todo il tipo dell'alert dinamico
         return to_route('admin.projects.index')
             ->with('message', "Progetto '$project->title' eliminato con successo!")
             ->with('type', "danger");
