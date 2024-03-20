@@ -18,8 +18,8 @@
     <div class="col">{{$project->description}}</div>
 </div>
 <div class="row my-5">
-    <div class="col-4"><strong>Creato:</strong> {{$project->created_at}} </div>
-    <div class="col-4"><strong>Modificato:</strong> {{$project->updated_at}}</div>
+    <div class="col-4"><strong>Creato:</strong> {{$project->getDate($project->created_at, 'd-m-Y H:m:s')}} </div>
+    <div class="col-4"><strong>Modificato:</strong> {{$project->getDate($project->updated_at, 'd-m-Y H:m:s')}}</div>
     <div class="col-4">
         <div class="d-flex justify-content-end gap-3">
             <a href="{{route('admin.projects.index')}}" class="btn btn-primary">Torna alla lista</a>

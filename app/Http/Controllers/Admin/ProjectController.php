@@ -94,7 +94,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        dd('Ha funzionato');
     }
 
     /**

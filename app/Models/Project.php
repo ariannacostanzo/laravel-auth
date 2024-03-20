@@ -19,7 +19,7 @@ class Project extends Model
         return $abstract;
     }
 
-    public function getDate($date) {
-        return Carbon::create($date)->format('d-m-Y');
+    public function getDate($date, $format = 'd-m-Y') {
+        return Carbon::create($date)->format($format);
     }
 }
