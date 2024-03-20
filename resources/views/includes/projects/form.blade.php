@@ -48,7 +48,7 @@
         </div>
         <div class="col-1">
             <div class="mb-3">
-                <img src="{{old('image', 'https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg')}}" id="preview" class="img-fluid">
+                <img src="{{old('image', $project->image)}}" id="preview" class="img-fluid">
             </div>
         </div>
         <div class="col-6"></div>
