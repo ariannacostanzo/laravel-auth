@@ -4,6 +4,8 @@
 
 @section('title', 'Projects')
 
+{{-- modal  --}}
+@include('includes.projects.modal')
 
 
 <h1>Progetti</h1>
@@ -32,9 +34,7 @@
     </thead>
     <tbody>
         @forelse ($projects as $project)
-            {{-- modal --}}
-            @include('includes.projects.modal')
-            
+
             <tr>
                 <th scope="row">{{ $project->id }}</th>
                 <td>{{ $project->title }}</td>
@@ -46,11 +46,13 @@
                                 class="fa-regular fa-eye"></i></a>
                         <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning"><i
                                 class="fa-solid fa-pen"></i></a>
-                                {{-- modal button  --}}
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#modal{{ $project->id }}">
-                            <i class="fa-regular fa-trash-can"></i></button>
-                        </button>
+                        
+                        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="delete-form" data-bs-toggle="modal" data-bs-target="#delete-modal" data-project="{{$project->title}}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
+                        </form>
+
                     </div>
                 </td>
             </tr>
@@ -66,3 +68,10 @@
 
 
 @endsection
+
+@section('scripts')
+@vite('resources/js/modal.js')
+
+@endsection
+
+{{-- todo guest projects show, trash, inserire dati con seeder, nuova colonna is_completed e cambiare per questo tutto quello che serve --}}

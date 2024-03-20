@@ -28,6 +28,7 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
 
 });
 
+
 //rotte auth
 
 Route::middleware('auth')->group(function () {

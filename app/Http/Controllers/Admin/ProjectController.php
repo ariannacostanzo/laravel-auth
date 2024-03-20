@@ -109,4 +109,14 @@ class ProjectController extends Controller
             ->with('message', "Progetto '$project->title' eliminato con successo!")
             ->with('type', "danger");
     }
+
+    // public function modal(Project $project)
+    // {
+    //     return to_route('admin.projects.index')->with('modal_id', "$project->id")
+    //     ->with('modal_label', "modal-$project->id-Label")
+    //     ->with('modal_text', "$project->title")
+    //     ->with('modal_project', $project->id);
+    // }
+
+    
 }

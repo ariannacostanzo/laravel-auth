@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('image')->nullable();
 
+
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,3 +34,4 @@ return new class extends Migration
         Schema::dropIfExists('projects');
     }
 };
+
