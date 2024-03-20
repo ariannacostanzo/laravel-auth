@@ -5,7 +5,7 @@
 @section('title', 'Projects')
 
 {{-- modal  --}}
-
+@include('includes.projects.modal')
 
 <h1>Progetti eliminati</h1>
 <hr>
@@ -47,7 +47,7 @@
                             <button class="btn btn-success"><i class="fa-solid fa-trash-arrow-up"></i></button>
                         </form>
                         
-                        <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="delete-form" data-bs-toggle="modal" data-bs-target="#delete-modal" data-project="{{$project->title}}">
+                        <form action="{{ route('admin.projects.drop', $project->id) }}" method="POST" class="delete-form" data-bs-toggle="modal" data-bs-target="#delete-modal" data-project="{{$project->title}}">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
@@ -67,4 +67,8 @@
 
 
 
+@endsection
+
+@section('scripts')
+@vite('resources/js/modal.js')
 @endsection

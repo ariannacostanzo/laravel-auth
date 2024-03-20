@@ -125,4 +125,12 @@ class ProjectController extends Controller
             ->with('message', "Progetto '$project->title' ripristinato con successo!")
             ->with('type', "success");
     }
+
+    public function drop(Project $project)
+    {
+        $project->forceDelete();
+        return to_route('admin.projects.trash')
+        ->with('message', "Progetto '$project->title' eliminato definitivamente!")
+        ->with('type', "danger");
+    }
 }

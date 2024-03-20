@@ -71,7 +71,6 @@
 
 @section('scripts')
 @vite('resources/js/modal.js')
-
 @endsection
 
 {{-- todo guest projects show, trash, inserire dati con seeder, nuova colonna is_completed e cambiare per questo tutto quello che serve --}}
