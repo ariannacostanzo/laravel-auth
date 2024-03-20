@@ -48,7 +48,7 @@ class ProjectController extends Controller
         ]);
 
         $data = $request->all();
-        
+
         $project = new Project();
 
         $project->fill($data);
@@ -56,9 +56,9 @@ class ProjectController extends Controller
         $project->slug = Str::slug($project->title);
         $project->save();
 
-        return to_route('admin.projects.show', $project->id);
-
-
+        return to_route('admin.projects.show', $project->id)
+            ->with('message', "Progetto '$project->title' creato con successo!")
+            ->with('type', "success");
     }
 
     /**
@@ -96,7 +96,9 @@ class ProjectController extends Controller
 
         $project->update($data);
 
-        return to_route('admin.projects.show', $project->id);
+        return to_route('admin.projects.show', $project->id)
+            ->with('message', "Progetto '$project->title' modificato con successo!")
+            ->with('type', "info");
     }
 
     /**
@@ -109,14 +111,4 @@ class ProjectController extends Controller
             ->with('message', "Progetto '$project->title' eliminato con successo!")
             ->with('type', "danger");
     }
-
-    // public function modal(Project $project)
-    // {
-    //     return to_route('admin.projects.index')->with('modal_id', "$project->id")
-    //     ->with('modal_label', "modal-$project->id-Label")
-    //     ->with('modal_text', "$project->title")
-    //     ->with('modal_project', $project->id);
-    // }
-
-    
 }
