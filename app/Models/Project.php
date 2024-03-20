@@ -12,6 +12,8 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = ['title', 'description', 'image', 'slug'];
+
     public function getAbstract() {
         $abstract = substr($this->description, 0, 100) . '...';
         return $abstract;

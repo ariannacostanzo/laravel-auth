@@ -8,8 +8,12 @@
 <h1>{{$project->title}}</h1>
 <hr>
 <div class="row">
-    <div class="{{ $project->image ? 'col-2' : '' }}">
-        <img src="{{ $project->image }}" alt="{{$project->title}}">
+    <div class="col-3">
+        @if(!$project->image)
+        <img src="https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg" alt="{{$project->title}}" class="img-fluid">
+        @else
+        <img src="{{ $project->image }}" alt="{{$project->title}}" class="img-fluid">
+        @endif
     </div>
     <div class="col">{{$project->description}}</div>
 </div>

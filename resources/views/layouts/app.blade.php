@@ -30,7 +30,7 @@
 
             @session('message')
             {{-- todo il tipo dinamico --}}
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-{{session('type')}}" role="alert">
                 {{$value}}
             </div>
             @endsession

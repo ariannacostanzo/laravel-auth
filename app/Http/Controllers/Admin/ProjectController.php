@@ -6,9 +6,25 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
+
+    // protected $validation_parameters = [
+    //     'title' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
+    //     'description' => 'required|string',
+    //     'image' => 'nullable|url',
+    // ];
+
+    // protected $validation_messages = [
+    //     'title.required' => 'Inserisci il titolo del progetto',
+    //     'description.required' => 'Inserisci la descrizione del progetto',
+    //     'image.url' => 'L\'url dell\'immagine non è corretto',
+    // ];
+
+
     /**
      * Display a listing of the resource.
      */
@@ -23,7 +39,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $project = new Project();
+        return view('admin.projects.create', compact('project'));
     }
 
     /**
@@ -31,7 +48,29 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'title' => 'required|string|unique:projects',
+            'description' => 'required|string',
+            'image' => 'nullable|url',
+        ], [
+            'title.required' => 'Inserisci il titolo del progetto',
+            'description.required' => 'Inserisci la descrizione del progetto',
+            'image.url' => 'L\'url dell\'immagine non è corretto',
+        ]);
+
+        $data = $request->all();
+        
+        $project = new Project();
+
+        $project->fill($data);
+
+        $project->slug = Str::slug($project->title);
+        $project->save();
+
+        return to_route('admin.projects.show', $project->id);
+
+
     }
 
     /**
@@ -65,6 +104,8 @@ class ProjectController extends Controller
     {
         $project->delete();
         //todo il tipo dell'alert dinamico
-        return to_route('admin.projects.index')->with('message', "Progetto #$project->id eliminato con successo");
+        return to_route('admin.projects.index')
+            ->with('message', "Progetto #$project->id eliminato con successo")
+            ->with('type', "danger");
     }
 }
