@@ -17,7 +17,7 @@
                         <p class="card-text">{{$project->getAbstract()}}</p>
                     </div>
                     <div class="mt-3">
-                        <a href="#" class="btn btn-primary">Vedi dettagli</a>
+                        <a href="{{route('guest.projects.show', $project->slug)}}" class="btn btn-primary">Vedi dettagli</a>
                     </div>
                 </div>
             </div>
