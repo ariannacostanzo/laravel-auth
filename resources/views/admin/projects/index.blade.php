@@ -13,7 +13,19 @@
       <th scope="col">Titolo</th>
       <th scope="col">Creato</th>
       <th scope="col">Modificato</th>
-      <th></th>
+      <th>
+        <div class="d-flex justify-content-end gap-3">
+          <a href="" class="btn btn-secondary">
+            <i class="fa-solid fa-trash-can me-2"></i>
+            {{-- todo rotta cestino --}}
+            Vedi Cestino
+          </a>
+          <a href="{{route('admin.projects.create')}}" class="btn btn-success">
+            <i class="fa-solid fa-plus me-2"></i>
+            Crea nuovo
+          </a>
+        </div>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -22,16 +34,18 @@
     <tr>
       <th scope="row">{{$project->id}}</th>
       <td>{{$project->title}}</td>
-      <td>{{$project->created_at}}</td>
-      <td>{{$project->updated_at}}</td>
-      <td class="d-flex justify-content-end gap-3">
-        <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
-        <a href="{{route('admin.projects.edit', $project->id)}}" class="btn btn-warning"><i class="fa-solid fa-pen"></i></a>
-        <form action="{{route('admin.projects.destroy', $project->id)}}", method="POST">
+      <td>{{$project->getDate($project->created_at)}}</td>
+      <td>{{$project->getDate($project->updated_at)}}</td>
+      <td >
+        <div class="d-flex justify-content-end gap-3">
+          <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-primary"><i class="fa-regular fa-eye"></i></a>
+          <a href="{{route('admin.projects.edit', $project->id)}}" class="btn btn-warning"><i class="fa-solid fa-pen"></i></a>
+          <form action="{{route('admin.projects.destroy', $project->id)}}", method="POST">
             @csrf
             @method('DELETE')
             <button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
-        </form>
+          </form>
+        </div>
       </td>
     </tr>
     @empty
