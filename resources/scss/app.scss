@@ -2,5 +2,20 @@ body {
     visibility: visible;
 }
 
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
 
+.my-card {
+    height: 430px;
+}
+
+.my-card-img {
+    height: 230px;
+
+    img {
+        height: 100%;
+    }
+}
+
+.card-body {
+    padding-top: 0;
+}

@@ -20,8 +20,13 @@
     <div class="col-4"><strong>Modificato:</strong> {{ $project->getDate($project->updated_at, 'd-m-Y H:m:s') }}</div>
     <div class="col-4">
         <div class="d-flex justify-content-end gap-3">
+            @if(!$project->trashed())
             <a href="{{ route('admin.projects.index') }}" class="btn btn-primary"><i
                     class="fa-solid fa-arrow-left me-2"></i>Torna alla lista</a>
+            @else 
+            <a href="{{ route('admin.projects.trash') }}" class="btn btn-primary"><i
+                    class="fa-solid fa-arrow-left me-2"></i>Torna al cestino</a>
+            @endif
             <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning"><i
                     class="fa-solid fa-pen me-2"></i>Modifica</a>
             <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="delete-form"

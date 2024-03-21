@@ -9,8 +9,10 @@
         @forelse ($projects as $project)
         <div class="col-3 my-3">
 
-            <div class="card h-100">
-                <img src="{{ $project->image ? $project->image : 'https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg' }}" class="card-img-top" alt="{{$project->title}}" class="img-fluid">
+            <div class="card my-card">
+                <figure class="my-card-img">
+                    <img src="{{ $project->image ? $project->image : 'https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg' }}" class="card-img-top img-fluid " alt="{{$project->title}}" >
+                </figure>
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div>
                         <h5 class="card-title mb-3">{{$project->title}}</h5>

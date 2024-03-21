@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             // 'password' => 'password'
         ]);
 
+        $this->call(ProjectSeeder::class);
         \App\Models\Project::factory(30)->create();
     }
 }

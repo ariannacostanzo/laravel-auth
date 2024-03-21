@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', GuestHomeController::class)->name('guest.home');
-Route::get('/{slug}', [GuestProjectController::class, 'show'])->name('guest.projects.show');
+Route::get('/projects/{slug}', [GuestProjectController::class, 'show'])->name('guest.projects.show');
 
 
 
@@ -33,7 +33,7 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
 
 
     //rotte resource project
-    Route::resource('/projects', AdminProjectController::class);
+    Route::resource('/projects', AdminProjectController::class)->withTrashed();
 });
 
 

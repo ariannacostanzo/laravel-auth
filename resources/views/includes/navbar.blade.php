@@ -15,7 +15,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link @if (Request::is('/')) active @endif" href="{{url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link @if (Request::is('/')) active @endif" href="{{route('guest.home') }}">{{ __('Home') }}</a>
                         </li>
                         @auth
                         <li class="nav-item">
@@ -31,11 +31,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
-                        {{-- @if (Route::has('register'))
+                        @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
-                        @endif --}}
+                        @endif
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
