@@ -22,4 +22,11 @@ class Project extends Model
     public function getDate($date, $format = 'd-m-Y') {
         return Carbon::create($date)->format($format);
     }
+
+    //rende il caricamento delle pagine troppo lento
+    // public function isValidImage() {
+    //     $imageInfo = @getimagesize($this->image);
+    //     $isValidImage = $imageInfo !== false;
+    //     return $isValidImage;
+    // }
 }

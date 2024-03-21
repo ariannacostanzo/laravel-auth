@@ -42,6 +42,12 @@
         </main>
     </div>
     @yield('scripts')
+
+    @session('message')
+    <script>
+        @vite('resources/js/close_alerts.js')
+    </script>
+    @endsession
 </body>
 
 </html>

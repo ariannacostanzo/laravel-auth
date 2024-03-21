@@ -10,6 +10,7 @@
 <hr>
 <div class="row">
     <div class="col-3">
+        
         <img src="{{ $project->image ? $project->image : 'https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg' }}"
             class="card-img-top" alt="{{ $project->title }}" class="img-fluid">
     </div>
