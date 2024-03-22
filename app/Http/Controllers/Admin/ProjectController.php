@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 
@@ -50,10 +52,19 @@ class ProjectController extends Controller
         $data = $request->all();
 
         $project = new Project();
-
+        
         $project->fill($data);
 
         $project->slug = Str::slug($project->title);
+
+        //gestisco l'immagine che mi arriva
+        if (Arr::exists($data, 'image')) {
+            $extension = $data['image']->extension();
+            $img_url = Storage::putFileAs('project_images', $data['image'], "$project->slug.$extension");
+            $project->image = $img_url;
+        }
+
+        
         $project->save();
 
         return to_route('admin.projects.show', $project->id)
@@ -94,6 +105,17 @@ class ProjectController extends Controller
         ]);
 
         $data = $request->all();
+        $data['slug'] = Str::slug($data['title']);
+
+        //gestisco l'immagine, se mi arriva
+        if (Arr::exists($data, 'image')) {
+            //controllo se aveva già un immagine e la cancella
+            if ($project->image) Storage::delete($project->image);
+
+            $extension = $data['image']->extension();
+            $img_url = Storage::putFileAs('project_images', $data['image'], "{$data['slug']}.$extension");
+            $project->image = $img_url;
+        }
 
         $project->update($data);
 
@@ -129,6 +151,7 @@ class ProjectController extends Controller
 
     public function drop(Project $project)
     {
+        if ($project->image) Storage::delete($project->image);
         $project->forceDelete();
         return to_route('admin.projects.trash')
         ->with('message', "Progetto '$project->title' eliminato definitivamente!")

@@ -11,7 +11,7 @@
 
             <div class="card my-card">
                 <figure class="my-card-img">
-                    <img src="{{ $project->image ? $project->image : 'https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg' }}" class="card-img-top img-fluid " alt="{{$project->title}}" >
+                    <img src="{{ $project->image ? $project->getImagePath() : 'https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg' }}" class="card-img-top img-fluid " alt="{{$project->title}}" >
                 </figure>
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div>

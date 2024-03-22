@@ -43,8 +43,15 @@
             <label for="image" class="form-label">Immagine</label>
             <input type="file"
                 class="form-control @error('image') is-invalid @elseif(old('image', '')) is-valid @enderror"
-                id="image" name="image" placeholder="https:// o http://"
-                value="{{ old('image', $project->image) }}">
+                id="image" name="image">
+
+            @if ($project->exists)
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" >Cambia immagine</button>
+                <input type="text" class="form-control" disabled value="{{old('image', $project->image)}}">
+            </div>
+            @endif
+            
             @error('image')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -54,7 +61,7 @@
     </div>
     <div class="col-1">
         <div class="mb-3">
-            <img src="{{ old('image', $project->image) }}" id="preview" class="img-fluid">
+            <img src="https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg" id="preview" class="img-fluid">
         </div>
     </div>
     <div class="col-6"></div>

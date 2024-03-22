@@ -12,7 +12,7 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'description', 'image', 'slug'];
+    protected $fillable = ['title', 'description', 'slug'];
 
     public function getAbstract() {
         $abstract = substr($this->description, 0, 50) . '...';
@@ -29,4 +29,8 @@ class Project extends Model
     //     $isValidImage = $imageInfo !== false;
     //     return $isValidImage;
     // }
+
+    public function getImagePath() {
+        return asset('storage/' . $this->image);
+    }
 }
