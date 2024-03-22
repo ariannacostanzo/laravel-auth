@@ -1,5 +1,4 @@
 
-
 <div class="modal fade" id="delete-modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -14,7 +13,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" id="close-btn" data-bs-dismiss="modal">Annulla</button>
-                    <button class="btn btn-primary" id="confirm-btn">Conferma</button>
+                <button class="btn btn-primary" id="confirm-btn" >Conferma</button>
             </div>
         </div>
     </div>

@@ -21,7 +21,6 @@
                 <div class="d-flex justify-content-end gap-3">
                     <a href="{{route('admin.projects.trash')}}" class="btn btn-secondary">
                         <i class="fa-solid fa-trash-can me-2"></i>
-                        {{-- todo rotta cestino --}}
                         Vedi Cestino
                     </a>
                     <a href="{{ route('admin.projects.create') }}" class="btn btn-success">
@@ -73,4 +72,4 @@
 @vite('resources/js/modal.js')
 @endsection
 
-{{-- todo guest projects show, trash, inserire dati con seeder, nuova colonna is_completed e cambiare per questo tutto quello che serve --}}
+{{-- todo nuova colonna is_completed e cambiare per questo tutto quello che serve --}}

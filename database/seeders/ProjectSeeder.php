@@ -44,6 +44,12 @@ class ProjectSeeder extends Seeder
                 'description' => 'Questo sito si propone come un\'imitazione del famoso Zalando.',
                 'image' => 'https://www.vestilanatura.it/wp-content/uploads/2021/04/zalando-second-hand.jpg',
             ],
+            [
+                'title' => 'DC Comics',
+                'slug' => 'dc-comics',
+                'description' => 'Questo sito si propone come un\'imitazione del famoso DC Comics.',
+                'image' => 'https://static.dc.com/dc/files/default_images/dc-homepage2.jpg',
+            ],
         ];
 
         foreach ($projects as $project) {

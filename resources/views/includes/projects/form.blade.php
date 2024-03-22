@@ -1,8 +1,8 @@
 @if ($project->exists)
-    <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+    <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
     @else
-        <form action="{{ route('admin.projects.store') }}" method="POST">
+        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
 @endif
 
 <div class="row">
@@ -41,7 +41,7 @@
     <div class="col-5">
         <div class="mb-3">
             <label for="image" class="form-label">Immagine</label>
-            <input
+            <input type="file"
                 class="form-control @error('image') is-invalid @elseif(old('image', '')) is-valid @enderror"
                 id="image" name="image" placeholder="https:// o http://"
                 value="{{ old('image', $project->image) }}">

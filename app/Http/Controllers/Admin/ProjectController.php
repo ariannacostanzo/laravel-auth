@@ -40,11 +40,11 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required|string|unique:projects',
             'description' => 'required|string',
-            'image' => 'nullable|url',
+            'image' => 'nullable|image',
         ], [
             'title.required' => 'Inserisci il titolo del progetto',
             'description.required' => 'Inserisci la descrizione del progetto',
-            'image.url' => 'L\'url dell\'immagine non è corretto',
+            'image.image' => 'Il formato immagine non è corretto',
         ]);
 
         $data = $request->all();
@@ -86,11 +86,11 @@ class ProjectController extends Controller
         $request->validate([
             'title' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
             'description' => 'required|string',
-            'image' => 'nullable|url',
+            'image' => 'nullable|image',
         ], [
             'title.required' => 'Inserisci il titolo del progetto',
             'description.required' => 'Inserisci la descrizione del progetto',
-            'image.url' => 'L\'url dell\'immagine non è corretto',
+            'image.url' => 'Il formato immagine non è corretto',
         ]);
 
         $data = $request->all();
