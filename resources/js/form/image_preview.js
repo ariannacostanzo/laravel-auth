@@ -1,6 +1,8 @@
 const inputImage = document.getElementById('image');
 const previewContainer = document.getElementById('preview');
 const emptyPlaceholder = 'https://bub.bh/wp-content/uploads/2018/02/image-placeholder.jpg'
+const changeImgButton = document.getElementById("change-img-button");
+const changeImgContainer = document.getElementById("change-img-container");
 
 let blobURL;
 //che quando cambio qualcosa nell'input
@@ -16,6 +18,12 @@ inputImage.addEventListener('change', () => {
 
     }
         
+})
+
+changeImgButton.addEventListener('click', () => {
+    changeImgContainer.classList.add('d-none')
+    inputImage.classList.remove('d-none')
+    inputImage.click();
 })
 
 //per liberarlo quando esco dalla pagina altrimenti rallenta il programma
