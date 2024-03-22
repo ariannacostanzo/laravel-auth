@@ -20,16 +20,15 @@ inputImage.addEventListener('change', () => {
         
 })
 
-changeImgButton.addEventListener('click', () => {
-    changeImgContainer.classList.add('d-none')
-    inputImage.classList.remove('d-none')
-    inputImage.click();
-})
+if (changeImgButton)
+{
+    changeImgButton.addEventListener("click", () => {
+        changeImgContainer.classList.add("d-none");
+        inputImage.classList.remove("d-none");
+        inputImage.click();
+    });
+}
 
-//per liberarlo quando esco dalla pagina altrimenti rallenta il programma
-window.addEventListener('beforeunload', () => {
-    if(blobURL) URL.revokeObjectURL(blobURL);
-})
 
 
 //slug 
@@ -41,3 +40,11 @@ slugContainer.value = titleContainer.value.trim().split(' ').join('-');
 titleContainer.addEventListener('blur', () => {
     slugContainer.value = titleContainer.value.trim().split(" ").join("-");
 })
+
+
+//per liberarlo quando esco dalla pagina altrimenti rallenta il programma
+window.addEventListener('beforeunload', () => {
+    if(blobURL) URL.revokeObjectURL(blobURL);
+})
+
+

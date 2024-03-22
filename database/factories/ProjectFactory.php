@@ -23,16 +23,14 @@ class ProjectFactory extends Factory
         $slug = Str::slug($title);
         //la funzione non sta funzionando
         $img = fake()->image(null, 200, 200);
-        dd($img);
-        
-        
+ 
         $img_url = Storage::putFileAs('project_images', $img , "$slug.png"); 
 
         return [
             'title' => $title,
             'slug' => $slug,
             'description' => fake()->paragraphs(8, true),
-            'image' => $img_url
+            'image' => $img_url,
         ];
     }
 }
